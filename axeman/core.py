@@ -247,7 +247,7 @@ async def get_certs_and_print():
 
             print(log['description'])
             print("    \- URL:            {}".format(log['url']))
-            print("    \- Owner:          {}".format(log_info['operated_by']))
+#            print("    \- Owner:          {}".format(log_info['operated_by']))
             print("    \- Cert Count:     {}".format(locale.format("%d", log_info['tree_size']-1, grouping=True)))
             print("    \- Max Block Size: {}\n".format(log_info['block_size']))
 

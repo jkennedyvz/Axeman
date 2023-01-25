@@ -132,7 +132,7 @@ async def processing_coro(download_results_queue, output_dir="/tmp"):
 
     while True:
         entries_iter = []
-        logging.info("Getting things to process...")
+        #logging.info("Getting things to process...")
         for _ in range(int(process_pool.pool_workers)):
             entries = await download_results_queue.get()
             if entries != None:
@@ -173,7 +173,7 @@ def process_worker(result_info):
 
         lines = []
 
-        print("[{}] Parsing...".format(os.getpid()))
+        #print("[{}] Parsing...".format(os.getpid()))
         for entry in result_info['entries']:
             mtl = certlib.MerkleTreeHeader.parse(base64.b64decode(entry['leaf_input']))
 
@@ -221,11 +221,11 @@ def process_worker(result_info):
                 ]) + "\n"
             )
 
-        print("[{}] Finished, writing CSV...".format(os.getpid()))
+        #print("[{}] Finished, writing CSV...".format(os.getpid()))
 
         with open(csv_file, 'w', encoding='utf8') as f:
             f.write("".join(lines))
-        print("[{}] CSV {} written!".format(os.getpid(), csv_file))
+        #print("[{}] CSV {} written!".format(os.getpid(), csv_file))
 
     except Exception as e:
         print("========= EXCEPTION =========")
